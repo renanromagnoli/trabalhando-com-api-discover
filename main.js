@@ -61,10 +61,40 @@ function addMyUser(getUser) {
         
 }
 
-getMyUser()
+// getMyUser()
 
+function changeUser(updateUser) {
 
+    fetch(`${url}/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify(updateUser),
+        headers: {"Content-type": "apllication/json; charset=UTF-8"}
+    })
+    .then(response => response.json())
+    .then(result => {
+        console.log('resultado do changeUser: ', result)
+        alertSave.textcontent = result
+    })
+}
+function deleteUser(updateUser) {
 
+    fetch(`${url}/${id}`, {
+        method: 'DELETE',
+        headers: {"Content-type": "apllication/json; charset=UTF-8"}
+    })
+    .then(response => response.json())
+    .then(result => {
+        alertSave.textcontent = result
+    })
+}
+
+const user = {
+    id: 1,
+    name: 'Arthur',
+    city: 'Milão'
+}
+
+changeUser(user)
 
 // const myUser = {
 //     name: 'Renan',
